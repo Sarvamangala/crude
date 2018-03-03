@@ -148,7 +148,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
                         <div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
                             <label>Name</label>
-                            <input type="text" name="name" class="form-control" value="<?php echo $name; ?>">
+                            <input type="text" name="name" class="form-control" value="<?php echo $name; ?>" required autocomplete = "name">
                             <span class="help-block"><?php echo $name_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($address_err)) ? 'has-error' : ''; ?>">
@@ -158,7 +158,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         </div>
                         <div class="form-group <?php echo (!empty($salary_err)) ? 'has-error' : ''; ?>">
                             <label>Salary</label>
-                            <input type="text" name="salary" class="form-control" value="<?php echo $salary; ?>">
+                            <input type="text" name="salary" class="form-control" value="<?php echo $salary; ?>" required autocomplete = "Address">
                             <span class="help-block"><?php echo $salary_err;?></span>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
