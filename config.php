@@ -2,10 +2,10 @@
 
 /* Database credentials. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
-define('DB_SERVER', 'YOUR LOCATION');
-define('DB_USERNAME', 'YOUR USER NAME');
-define('DB_PASSWORD', 'YOUR PASSWORD');
-define('DB_NAME', 'YOUR DATABASE NAME');
+define('DB_SERVER', 'LOCALHOST');
+define('DB_USERNAME', 'Saru');
+define('DB_PASSWORD', 'gw');
+define('DB_NAME', 'Saru');
  
 /* Attempt to connect to MySQL database */
 try{
