@@ -1,6 +1,11 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 // Include config file
 require_once 'config.php';
+require '/home/cabox/workspace/PHPMailer-master/src/Exception.php';
+require '/home/cabox/workspace/PHPMailer-master/src/PHPMailer.php';
+require '/home/cabox/workspace/PHPMailer-master/src/SMTP.php';
  
 // Define variables and initialize with empty values
 $name = $address = $salary = "";
@@ -54,8 +59,34 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
+    // Configuring SMTP server settings
+            $mail = new PHPMailer;
+            $mail->isSMTP();
+            $mail->Host = 'LOCALHOST';
+            $mail->Port = 587;
+            $mail->SMTPSecure = 'tls';
+            $mail->SMTPAuth = true;
+            $mail->Username = "shyamravichandran2534@gmail.com";
+            $mail->Password = "FriendsForever2534.";
+
+// Email Sending Details
+        //    $to_id="angadi.saru@gmail.com"
+            $mail->addAddress('angadi.saru@gmail.com');
+            $mail->Subject = "employee database";
+            $message="new field added";
+            $mail->msgHTML($message);
+
+// Success or Failure
+            if (!$mail->send()) {
+            $error = "Mailer Error: " . $mail->ErrorInfo;
+            echo '<p id="para">'.$error.'</p>';
+            }
+            else {
+            echo '<p id="para">Message sent!</p>';
+            }
+
                 // Records created successfully. Redirect to landing page
-                header("location: index.php");
+                header("location: dashboard.php");
                 exit();
             } else{
                 echo "Something went wrong. Please try again later.";
@@ -77,6 +108,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Create Record</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" />
     <style type="text/css">
         .wrapper{
             width: 500px;
@@ -96,23 +128,43 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
                             <label>Name</label>
-                            <input type="text" name="name" class="form-control" value="<?php echo $name; ?>">
+                            <input id="name" type="text" name="name" class="form-control" value="<?php echo $name; ?>">
                             <span class="help-block"><?php echo $name_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($address_err)) ? 'has-error' : ''; ?>">
                             <label>Address</label>
-                            <textarea name="address" class="form-control"><?php echo $address; ?></textarea>
+                            <textarea id="address" name="address" class="form-control"><?php echo $address; ?></textarea>
                             <span class="help-block"><?php echo $address_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($salary_err)) ? 'has-error' : ''; ?>">
                             <label>Salary</label>
-                            <input type="text" name="salary" class="form-control" value="<?php echo $salary; ?>">
+                            <input id="salary" type="text" name="salary" class="form-control" value="<?php echo $salary; ?>">
                             <span class="help-block"><?php echo $salary_err;?></span>
                         </div>
-                     <input type="button" onclick="location.href='upload.html';" value="Upload!" />
                         <input type="submit" class="btn btn-primary" value="Submit">
-                        <a href="index.php" class="btn btn-default">Cancel</a>
+                        <a href="upload.php" class="btn btn-default">Upload!</a>
+                        <a href="dashboard.php" class="btn btn-default">Cancel</a>
                     </form>
+                  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+                  <script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>    
+                  <script type="text/javascript">
+                  $(function() {
+    
+                  //autocomplete
+                  $("#name").autocomplete({
+                  source: "search.php",
+                  minLength: 1
+                                  });  
+                   $("#address").autocomplete({
+                  source: "search_address.php",
+                  minLength: 1
+                                  });  
+                   $("#salary").autocomplete({
+                  source: "search_address.php",
+                  minLength: 1
+                                  });  
+                   });
+                  </script>
                 </div>
             </div>        
         </div>

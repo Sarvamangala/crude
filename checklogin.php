@@ -12,8 +12,8 @@ mysql_connect("$host", "$username", "$password")or die("cannot connect");
 mysql_select_db("$db_name")or die("cannot select DB");
 
 // Define $myusername and $mypassword
-$myusername=$_POST['myusername'];
-$mypassword=$_POST['mypassword'];
+$myusername=$_POST['Username'];
+$mypassword=$_POST['Password'];
 
 // To protect MySQL injection (more detail about MySQL injection)
 $myusername = stripslashes($myusername);
@@ -32,7 +32,7 @@ $count=mysql_num_rows($result);
 if($count==1){
 
 // Register $myusername, $mypassword and redirect to file "login_success.php"
-   header("location: index.php");
+   header("location: dashboard.php");
 }
 else {
 echo "Wrong Username or Password";
