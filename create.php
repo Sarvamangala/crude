@@ -109,6 +109,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <input type="text" name="salary" class="form-control" value="<?php echo $salary; ?>">
                             <span class="help-block"><?php echo $salary_err;?></span>
                         </div>
+                     <input type="button" onclick="location.href='upload.html';" value="Upload!" />
                         <input type="submit" class="btn btn-primary" value="Submit">
                         <a href="index.php" class="btn btn-default">Cancel</a>
                     </form>
