@@ -6,6 +6,7 @@ require_once 'config.php';
 require '/home/cabox/workspace/PHPMailer-master/src/Exception.php';
 require '/home/cabox/workspace/PHPMailer-master/src/PHPMailer.php';
 require '/home/cabox/workspace/PHPMailer-master/src/SMTP.php';
+require '/home/cabox/workspace/PHPMailer-master/src/OAuth.php';
  
 // Define variables and initialize with empty values
 $name = $address = $salary = "";
@@ -62,32 +63,36 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Configuring SMTP server settings
             $mail = new PHPMailer;
             $mail->isSMTP();
-            $mail->Host = 'LOCALHOST';
+         //   $mail->SMTPDebug = 3;
+            $mail->Debugoutput = 'html';
+            $mail->Host = 'smtp.gmail.com';
             $mail->Port = 587;
             $mail->SMTPSecure = 'tls';
             $mail->SMTPAuth = true;
             $mail->Username = "shyamravichandran2534@gmail.com";
-            $mail->Password = "FriendsForever2534.";
+            $mail->Password = "FriendsForever1994.";
 
 // Email Sending Details
         //    $to_id="angadi.saru@gmail.com"
-            $mail->addAddress('angadi.saru@gmail.com');
+            $mail->setFrom('shyamravichandran2534@gmail.com','sender');
+            $mail->addAddress('angadi.saru@gmail.com','receiver');
             $mail->Subject = "employee database";
             $message="new field added";
             $mail->msgHTML($message);
 
 // Success or Failure
-            if (!$mail->send()) {
-            $error = "Mailer Error: " . $mail->ErrorInfo;
-            echo '<p id="para">'.$error.'</p>';
+            if ($mail->send()) {
+           echo '<p id="para">Message sent!</p>';
             }
             else {
-            echo '<p id="para">Message sent!</p>';
+               $error = "Mailer Error: " . $mail->ErrorInfo;
+            echo '<p id="para">'.$error.'</p>';
+            exit();
             }
 
                 // Records created successfully. Redirect to landing page
-                header("location: dashboard.php");
-                exit();
+               header("location: dashboard.php");
+               exit();
             } else{
                 echo "Something went wrong. Please try again later.";
             }
