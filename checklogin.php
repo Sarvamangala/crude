@@ -1,7 +1,8 @@
 <?php
 
 ob_start();
-$host="localhost"; // Host name
+#require 'config.php';
+$host="LOCALHOST"; // Host name
 $username="Saru"; // Mysql username
 $password="gw"; // Mysql password
 $db_name="Saru"; // Database name

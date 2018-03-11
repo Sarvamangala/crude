@@ -69,13 +69,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $mail->Port = 587;
             $mail->SMTPSecure = 'tls';
             $mail->SMTPAuth = true;
-            $mail->Username = "shyamravichandran2534@gmail.com";
-            $mail->Password = "FriendsForever1994.";
+            $mail->Username = "akeys2503@gmail.com";
+            $mail->Password = "superwoman";
 
 // Email Sending Details
         //    $to_id="angadi.saru@gmail.com"
-            $mail->setFrom('shyamravichandran2534@gmail.com','sender');
-            $mail->addAddress('angadi.saru@gmail.com','receiver');
+            $mail->setFrom('akeys2503@gmail.com','sender');
+            $mail->addAddress('bshelton2517@gmail.com','receiver');
             $mail->Subject = "employee database";
             $message="new field added";
             $mail->msgHTML($message);
@@ -133,7 +133,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
                             <label>Name</label>
-                            <input id="name" type="text" name="name" class="form-control" value="<?php echo $name; ?>">
+                            <input id="name" type="text" name="name" class="form-control" value="<?php echo $name; ?>" >
                             <span class="help-block"><?php echo $name_err;?></span>
                         </div>
                         <div class="form-group <?php echo (!empty($address_err)) ? 'has-error' : ''; ?>">
@@ -143,7 +143,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
                         <div class="form-group <?php echo (!empty($salary_err)) ? 'has-error' : ''; ?>">
                             <label>Salary</label>
-                            <input id="salary" type="text" name="salary" class="form-control" value="<?php echo $salary; ?>">
+                            <input id="salary" type="text" name="salary" class="form-control" value="<?php echo $salary; ?>" >
                             <span class="help-block"><?php echo $salary_err;?></span>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Submit">
@@ -156,16 +156,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                   $(function() {
     
                   //autocomplete
-                  $("#name").autocomplete({
-                  source: "search.php",
-                  minLength: 1
-                                  });  
                    $("#address").autocomplete({
                   source: "search_address.php",
                   minLength: 1
                                   });  
+                   $("#name").autocomplete({
+                  source: "search.php",
+                  minLength: 1
+                                  });  
                    $("#salary").autocomplete({
-                  source: "search_address.php",
+                  source: "search_salary.php",
                   minLength: 1
                                   });  
                    });
