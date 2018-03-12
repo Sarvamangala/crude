@@ -9,6 +9,7 @@ require '/home/cabox/workspace/PHPMailer-master/src/Exception.php';
 require '/home/cabox/workspace/PHPMailer-master/src/PHPMailer.php';
 require '/home/cabox/workspace/PHPMailer-master/src/SMTP.php';
 require '/home/cabox/workspace/PHPMailer-master/src/OAuth.php';
+
 $target_file = "/home/cabox/workspace/BULK_UPLOAD/bulk.txt";
 $sql = mysql_connect("LOCALHOST", "Saru", "gw");
 if (!$sql) {
