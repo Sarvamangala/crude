@@ -1,7 +1,9 @@
 <?php
+
+// Bulk upload and send the mail confirmation
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-// Include config file
 
 require '/home/cabox/workspace/PHPMailer-master/src/Exception.php';
 require '/home/cabox/workspace/PHPMailer-master/src/PHPMailer.php';
