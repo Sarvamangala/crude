@@ -1,4 +1,5 @@
 <?php
+//To look for the name in database for autocomplete
 
 define('DB_SERVER', 'LOCALHOST');
 define('DB_USERNAME', 'Saru');

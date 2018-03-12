@@ -1,4 +1,5 @@
 <?php
+//To look for the salary in database for autocomplete
 
 define('DB_SERVER', 'LOCALHOST');
 define('DB_USERNAME', 'Saru');

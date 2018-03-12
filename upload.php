@@ -18,7 +18,6 @@ $result = mysql_query("LOAD DATA INFILE '$target_file'" .
 
  $mail = new PHPMailer;
             $mail->isSMTP();
-         // $mail->SMTPDebug = 3;
             $mail->Debugoutput = 'html';
             $mail->Host = 'smtp.gmail.com';
             $mail->Port = 587;
@@ -28,7 +27,7 @@ $result = mysql_query("LOAD DATA INFILE '$target_file'" .
             $mail->Password = "superwoman";
 
 // Email Sending Details
-        //    $to_id="angadi.saru@gmail.com"
+        //    $to_id="bshelton2517@gmail.com"
             $mail->setFrom('akeys2503@gmail.com','sender');
             $mail->addAddress('bshelton2517@gmail.com','receiver');
             $mail->Subject = "employee database";

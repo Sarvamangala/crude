@@ -32,7 +32,7 @@ $count=mysql_num_rows($result);
 
 if($count==1){
 
-// Register $myusername, $mypassword and redirect to file "login_success.php"
+// Register $myusername, $mypassword and redirect to file "dashboard.php"
    header("location: dashboard.php");
 }
 else {
